@@ -1,0 +1,1 @@
+# sql-server-mcp-server
