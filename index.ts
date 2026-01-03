@@ -9,7 +9,7 @@ dotenv.config();
 
 const config = {
     // Connection to Application Database (from .env or hardcoded fallback)
-    connectionString: process.env.DB_CONNECTION_STRING || "Driver={ODBC Driver 17 for SQL Server};Server=STPAMITDT02\\SA;Database=MyAppDb;Uid=mcp_user;Pwd=mcp@890;Trusted_Connection=no;Encrypt=no;"
+    connectionString: process.env.DB_CONNECTION_STRING
 };
 
 const server = new Server({
@@ -180,4 +180,5 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
 // Start Server
 const transport = new StdioServerTransport();
+
 await server.connect(transport);
