@@ -7,7 +7,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 const config = {
     // Connection to Application Database (from .env or hardcoded fallback)
-    connectionString: process.env.DB_CONNECTION_STRING || "Driver={ODBC Driver 17 for SQL Server};Server=STPAMITDT02\\SA;Database=MyAppDb;Uid=mcp_user;Pwd=mcp@890;Trusted_Connection=no;Encrypt=no;"
+    connectionString: process.env.DB_CONNECTION_STRING
 };
 const server = new Server({
     name: "mssql-read-only-server",
@@ -147,6 +147,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                     FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS tc
                     JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE ccu ON tc.CONSTRAINT_NAME = ccu.CONSTRAINT_NAME
                     WHERE tc.CONSTRAINT_TYPE = 'PRIMARY KEY' AND tc.TABLE_NAME = @t3 AND tc.TABLE_SCHEMA = @s3
+
                 `);
             const metadata = {
                 table: `${schemaName}.${tableName}`,
