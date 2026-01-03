@@ -1,0 +1,60 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build TypeScript",
+      "type": "shell",
+      "command": "npx",
+      "args": ["tsc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": {
+        "owner": "typescript",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": "$tsc"
+      }
+    },
+    {
+      "label": "Run MCP Server",
+      "type": "shell",
+      "command": "node",
+      "args": ["index.js"],
+      "group": {
+        "kind": "test"
+      },
+      "presentation": {
+        "reveal": "always"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "Test Connection",
+      "type": "shell",
+      "command": "node",
+      "args": ["test-connection.js"],
+      "group": {
+        "kind": "test"
+      },
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "Build and Run Server",
+      "type": "shell",
+      "command": "npx",
+      "args": ["tsc"],
+      "dependsOn": [],
+      "group": {
+        "kind": "build"
+      },
+      "presentation": {
+        "reveal": "always"
+      }
+    }
+  ]
+}
